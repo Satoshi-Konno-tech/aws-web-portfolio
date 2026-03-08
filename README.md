@@ -65,9 +65,7 @@ CIDR
 ### Route Table
 
 
-0.0.0.0/0
-↓
-Internet Gateway
+0.0.0.0/0 -> Internet Gateway
 
 
 インターネットアクセス用ルーティングを設定
@@ -86,9 +84,9 @@ Internet Gateway
 ### Apacheインストール
 
 
-sudo dnf install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
+- sudo dnf install httpd -y
+- sudo systemctl start httpd
+- sudo systemctl enable httpd
 
 
 ---
@@ -120,26 +118,18 @@ HTTP : 80
 ## Target Group
 
 Name
-
-
 portfolio-web-tg
 
 
 Protocol
-
-
 HTTP
 
 
 Port
-
-
 80
 
 
 Target type
-
-
 Instance
 
 
@@ -180,11 +170,7 @@ Source : ALB Security Group
 これにより
 
 
-Internet
-↓
-ALB
-↓
-EC2
+Internet -> ALB -> EC2
 
 
 の通信のみ許可し、EC2への直接アクセスを防止しています。
@@ -282,3 +268,4 @@ ALB経由のみ通信可能な構成となっています。
 - Auto Scalingの導入による可用性向上
 - HTTPS化（ACM + ALB）
 - TerraformによるInfrastructure as Code化
+

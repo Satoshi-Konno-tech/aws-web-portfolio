@@ -3,6 +3,8 @@
 ## Architecture
 ![Architecture](images/architecture.jpg)
 
+---
+
 ## 概要
 
 AWSの基本的なWebアーキテクチャの理解を目的として構築しました。
@@ -14,6 +16,7 @@ AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を
 セキュリティ設計として、EC2インスタンスへのHTTPアクセスはALBのSecurity Groupからのみ許可し、インターネットからの直接アクセスを制限しています。
 
 ※管理用SSHアクセスは許可しています。
+
 ---
 
 ## 使用サービス
@@ -42,7 +45,8 @@ AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を
 
 2つのAvailability ZoneにPublic Subnetを作成し、可用性を考慮した構成としています。
 
-## コンピュート
+---
+### コンピュート
 
 | リソース    | 設定                 |
 | ------- | ------------------ |
@@ -52,6 +56,7 @@ AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を
 
 EC2インスタンス上にApacheをインストールし、Webサーバーとして動作させています。
 
+---
 ### Route Table
 
 
@@ -251,6 +256,7 @@ ALB経由のみ通信可能な構成となっています。
 - Auto Scalingの導入による可用性向上
 - HTTPS化（ACM + ALB）
 - TerraformによるInfrastructure as Code化
+
 
 
 

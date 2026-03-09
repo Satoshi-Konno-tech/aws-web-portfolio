@@ -22,7 +22,7 @@ AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を
 - Amazon VPC
 - Subnet
 - Internet Gateway
-- Route Table
+- Route Table (Public)
 - Security Group
 - Amazon EC2
 - Apache HTTP Server
@@ -260,5 +260,6 @@ ALB経由のみ通信可能な構成となっています。
 - Auto Scalingの導入による可用性向上
 - HTTPS化（ACM + ALB）
 - TerraformによるInfrastructure as Code化
+
 
 

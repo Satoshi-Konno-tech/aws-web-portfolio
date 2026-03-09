@@ -1,7 +1,6 @@
 # AWS Web Server Architecture Portfolio
 
 ## Architecture
-
 ![Architecture](images/architecture.jpg)
 
 ## 概要
@@ -20,7 +19,7 @@ AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を
 ## 使用サービス
 
 - Amazon VPC
-- Subnet
+- Public Subnet
 - Internet Gateway
 - Route Table (Public)
 - Security Group
@@ -43,16 +42,26 @@ CIDR
 
 ---
 
-### Public Subnet
+### ネットワーク構成
 
+| リソース | 設定 |
+|----------|------|
+| VPC | 10.0.0.0/16 |
+| Public Subnet A | 10.0.1.0/24 |
+| Public Subnet C | 10.0.2.0/24 |
+| Availability Zones | AZ-A / AZ-C |
 
-10.0.1.0/24
-10.0.2.0/24
+2つのAvailability ZoneにPublic Subnetを作成し、可用性を考慮した構成としています。
 
+## コンピュート
 
-2つのAZにSubnetを配置
+| リソース    | 設定                 |
+| ------- | ------------------ |
+| インスタンス  | Amazon EC2         |
+| OS      | Amazon Linux       |
+| Webサーバー | Apache HTTP Server |
 
----
+EC2インスタンス上にApacheをインストールし、Webサーバーとして動作させています。
 
 ### Route Table
 
@@ -75,7 +84,6 @@ CIDR
 
 ### Apacheインストール
 
-
 - sudo dnf install httpd -y
 - sudo systemctl start httpd
 - sudo systemctl enable httpd
@@ -91,18 +99,12 @@ AWS Portfolio Web Server
 
 ---
 
-## Application Load Balancer
+## ロードバランサー設定
 
-Scheme
-
-
-Internet-facing
-
-
-Listener
-
-
-HTTP : 80
+| 項目 | 設定 |
+|-----|------|
+| Scheme | Internet-facing |
+| Listener | HTTP : 80 |
 
 
 ---
@@ -260,6 +262,7 @@ ALB経由のみ通信可能な構成となっています。
 - Auto Scalingの導入による可用性向上
 - HTTPS化（ACM + ALB）
 - TerraformによるInfrastructure as Code化
+
 
 
 

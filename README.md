@@ -2,27 +2,19 @@
 
 ## Architecture
 
-```
-Internet
-   |
-   v
-Application Load Balancer
-   |
- +-----------------------+
- |                       |
- v                       v
-Public Subnet A      Public Subnet C
-        |
-        v
-EC2 Web Server (Apache)
-```
+![Architecture](images/architecture.jpg)
 
 ## 概要
 
-AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を利用してEC2インスタンスへトラフィックをルーティングする構成を作成しました。
+AWSの基本的なWebアーキテクチャの理解を目的として構築しました。
 
-セキュリティ設計として、EC2インスタンスへの直接アクセスを禁止し、ALB経由のみ通信可能な構成としています。
+AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を利用してEC2インスタンスへトラフィックをルーティングする構成としています。
 
+ネットワークはVPC内に2つのAvailability Zoneを配置し、それぞれにPublic Subnetを作成しています。
+
+セキュリティ設計として、EC2インスタンスへのHTTPアクセスはALBのSecurity Groupからのみ許可し、インターネットからの直接アクセスを制限しています。
+
+※管理用SSHアクセスは許可しています。
 ---
 
 ## 使用サービス
@@ -268,4 +260,5 @@ ALB経由のみ通信可能な構成となっています。
 - Auto Scalingの導入による可用性向上
 - HTTPS化（ACM + ALB）
 - TerraformによるInfrastructure as Code化
+
 

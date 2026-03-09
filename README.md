@@ -30,17 +30,6 @@ AWS上にWebサーバー環境を構築し、Application Load Balancer (ALB) を
 
 ---
 
-## ネットワーク構成
-
-### VPC
-
-CIDR
-
-
-10.0.0.0/16
-
-
----
 
 ### ネットワーク構成
 
@@ -262,6 +251,7 @@ ALB経由のみ通信可能な構成となっています。
 - Auto Scalingの導入による可用性向上
 - HTTPS化（ACM + ALB）
 - TerraformによるInfrastructure as Code化
+
 
 
 

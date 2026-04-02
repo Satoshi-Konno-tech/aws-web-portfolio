@@ -11,14 +11,7 @@ Security GroupによりHTTP通信はALB経由のみ許可することで、
 ---
 
 # アーキテクチャ
-
-Internet
-↓
-Application Load Balancer
-↓
-Target Group
-↓
-EC2 (No Public IP / Private access via ALB only)
+![architecture](images/architecture.jpg)
 
 ---
 
